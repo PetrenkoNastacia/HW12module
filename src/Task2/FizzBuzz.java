@@ -5,6 +5,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class FizzBuzz extends Thread{
+
     private final int n = 50;
     private static volatile AtomicInteger number = new AtomicInteger(1);
     private boolean isAlive = true;
@@ -16,8 +17,6 @@ public class FizzBuzz extends Thread{
     }
 
     public synchronized void fizz() {
-        FizzBuzz A = new FizzBuzz();
-        A.start();
         while (isAlive && number.get() < n) {
             if (number.get() % 3 == 0 && number.get() % 5 != 0) {
                 add("fizz");
@@ -34,8 +33,6 @@ public class FizzBuzz extends Thread{
     }
 
     public synchronized void buzz() {
-        FizzBuzz B = new FizzBuzz();
-        B.start();
         while (isAlive && number.get() < n) {
             if (number.get() % 3 != 0 && number.get() % 5 == 0) {
                 add("buzz");
@@ -52,8 +49,6 @@ public class FizzBuzz extends Thread{
     }
 
     public synchronized void fizzbuzz() {
-        FizzBuzz C = new FizzBuzz();
-        C.start();
         while (isAlive && number.get() < n) {
             if (number.get() % 3 == 0 && number.get() % 5 == 0) {
                 add("fizzbuzz");
@@ -66,13 +61,10 @@ public class FizzBuzz extends Thread{
                     throw new RuntimeException(e);
                 }
             }
-
         }
     }
 
     public synchronized void number() {
-        FizzBuzz D = new FizzBuzz();
-        D.start();
         while (isAlive && number.get() < n) {
             if (number.get() % 3 != 0 && number.get() % 5 != 0) {
                 add(String.valueOf(number));
@@ -88,9 +80,7 @@ public class FizzBuzz extends Thread{
         }
     }
 
-    public void print() {
-        FizzBuzz printThread = new FizzBuzz();
-        printThread.start();
+    public synchronized void print() {
         while (isAlive) {
             try {
                 sleep(1000);
