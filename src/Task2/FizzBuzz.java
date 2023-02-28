@@ -91,6 +91,7 @@ public class FizzBuzz extends Thread{
                 setAlive(false);
                 System.out.println(queue.poll());
             }
+            notifyAll();
         }
     }
 
