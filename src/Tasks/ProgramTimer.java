@@ -1,4 +1,4 @@
-package Task1;
+package Tasks;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
